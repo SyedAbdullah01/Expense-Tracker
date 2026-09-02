@@ -9,6 +9,14 @@ const total = document.getElementById("total-expenses");
 
 const expenses = [];
 
+function updateTotal() {
+  const totalAmount = expenses.reduce(function (accumulator, expense) {
+    return accumulator + expense.amount;
+  }, 0);
+
+  total.textContent = totalAmount;
+}
+
 expenseForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -16,6 +24,7 @@ expenseForm.addEventListener("submit", function (event) {
     description: description.value,
     amount: Number(amount.value),
     category: category.value,
+    id: Date.now(),
   };
 
   const listItem = document.createElement("li");
@@ -40,6 +49,26 @@ expenseForm.addEventListener("submit", function (event) {
   amountSpan.textContent = `-$${expense.amount.toFixed(2)}`;
   delButton.textContent = "Delete";
 
+  // Store expense ID on delete button
+  delButton.dataset.id = expense.id;
+
+  // Delete expense
+  delButton.addEventListener("click", function () {
+    console.log(delButton.dataset.id);
+
+    const index = expenses.findIndex(function (expense) {
+      return expense.id === Number(delButton.dataset.id);
+    });
+
+    expenses.splice(index, 1);
+
+    listItem.remove();
+
+    updateTotal();
+
+    console.log(expenses);
+  });
+
   // Build the hierarchy
   innerDiv.appendChild(descriptionText);
   innerDiv.appendChild(categoryText);
@@ -57,11 +86,7 @@ expenseForm.addEventListener("submit", function (event) {
 
   expenses.push(expense);
 
-  const totalAmount = expenses.reduce(function (accumulator, expense) {
-    return accumulator + expense.amount;
-  }, 0);
-
-  total.textContent = totalAmount;
+  updateTotal();
 
   expenseForm.reset();
 
