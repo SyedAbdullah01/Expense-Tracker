@@ -31,6 +31,8 @@ expenseForm.addEventListener("submit", function (event) {
 
   total.textContent = totalAmount;
 
+  expenseForm.reset();
+
   console.log(expenses);
   console.log(listItem);
 });
