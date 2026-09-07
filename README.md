@@ -22,7 +22,7 @@ A simple and responsive expense tracker built with HTML, CSS, and vanilla JavaSc
 
 ## What I Practiced
 
-This project was built as part of my JavaScript revision and helped me practice:
+This project was built as part of my JavaScript practice and helped me practice:
 
 * DOM manipulation
 * Events and event listeners
@@ -49,8 +49,8 @@ No dependencies or build tools are required.
 
 ## Live Demo
 
-GitHub Pages: Add your live site link here.
+Github Pages: [Expense Tracker](https://syedabdullah01.github.io/Expense-Tracker/)
 
 ## Purpose
 
-This is a practice project created while revising JavaScript fundamentals and learning how to structure a small real-world web application.
+This is a practice project created while practicing JavaScript fundamentals and learning how to structure a small real-world web application.
