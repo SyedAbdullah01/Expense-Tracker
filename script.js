@@ -114,6 +114,14 @@ expenseForm.addEventListener("submit", function (event) {
   console.log(listItem);
 });
 
+function renderExpenses(expensesToRender) {
+  list.innerHTML = "";
+}
+
+const filteredExpenses = expenses.filter(function (expense) {
+  return filter.value === "all" || expense.category === filter.value;
+});
+
 // Set the correct initial state when the page first loads.
 updateTotal();
 updateEmptyMessage();
